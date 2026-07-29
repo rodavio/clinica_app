@@ -1,0 +1,41 @@
+<h1>Criar conta</h1>
+
+<% if @user.errors.any? %>
+  <div>
+    <h2>Não foi possível realizar o cadastro:</h2>
+
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @user, url: registration_path do |form| %>
+  <div>
+    <%= form.label :name, "Nome" %>
+    <%= form.text_field :name, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :email_address, "E-mail" %>
+    <%= form.email_field :email_address, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :password, "Senha" %>
+    <%= form.password_field :password, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :password_confirmation, "Confirmação da senha" %>
+    <%= form.password_field :password_confirmation, required: true %>
+  </div>
+
+  <%= form.submit "Cadastrar" %>
+<% end %>
+
+<p>
+  <%= link_to "Já possuo uma conta", new_session_path %>
+</p>

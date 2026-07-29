@@ -1,0 +1,47 @@
+<%= form_with(model: prestador) do |form| %>
+  <% if prestador.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(prestador.errors.count, "error") %> prohibited this prestador from being saved:</h2>
+
+      <ul>
+        <% prestador.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nome_completo, style: "display: block" %>
+    <%= form.text_field :nome_completo %>
+  </div>
+
+  <div>
+    <%= form.label :especialidade, style: "display: block" %>
+    <%= form.text_field :especialidade %>
+  </div>
+
+  <div>
+    <%= form.label :registro_profissional, style: "display: block" %>
+    <%= form.text_field :registro_profissional %>
+  </div>
+
+  <div>
+    <%= form.label :telefone, style: "display: block" %>
+    <%= form.text_field :telefone %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.number_field :status %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

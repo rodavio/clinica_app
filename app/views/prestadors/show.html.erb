@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @prestador %>
+
+<div>
+  <%= link_to "Edit this prestador", edit_prestador_path(@prestador) %> |
+  <%= link_to "Back to prestadors", prestadors_path %>
+
+  <%= button_to "Destroy this prestador", @prestador, method: :delete %>
+</div>
