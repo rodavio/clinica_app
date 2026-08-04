@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  resources :atendimentos
+  get "dashboard/index"
+  resources :atendimentos do
+    patch :cancelar, on: :member
+  end
   resources :pacientes
-  resources :prestadors
+  resources :prestadores
   resource :session
   resources :passwords, param: :token
 
@@ -10,5 +13,5 @@ Rails.application.routes.draw do
   get "sign_up", to: "registrations#new"
   post "sign_up", to: "registrations#create"
 
-  root "registrations#new"
+  root "dashboard#index"
 end

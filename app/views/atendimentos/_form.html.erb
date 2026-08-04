@@ -1,49 +1,78 @@
 <%= form_with(model: atendimento) do |form| %>
   <% if atendimento.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(atendimento.errors.count, "error") %> prohibited this atendimento from being saved:</h2>
+    <div>
+      <h2>
+        Não foi possível salvar o atendimento:
+      </h2>
 
       <ul>
-        <% atendimento.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% atendimento.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
   <div>
-    <%= form.label :paciente_id, style: "display: block" %>
-    <%= form.text_field :paciente_id %>
+    <%= form.label :paciente_id, "Paciente" %>
+
+    <%= form.collection_select(
+      :paciente_id,
+      Paciente.order(:nome_completo),
+      :id,
+      :nome_completo,
+      prompt: "Selecione um paciente"
+    ) %>
   </div>
 
   <div>
-    <%= form.label :prestador_id, style: "display: block" %>
-    <%= form.text_field :prestador_id %>
+    <%= form.label :prestador_id, "Prestador" %>
+
+    <%= form.collection_select(
+      :prestador_id,
+      Prestador.ativo.order(:nome_completo),
+      :id,
+      :nome_completo,
+      prompt: "Selecione um prestador"
+    ) %>
   </div>
 
   <div>
-    <%= form.label :data_hora, style: "display: block" %>
-    <%= form.datetime_field :data_hora %>
+    <%= form.label :data_hora, "Data e hora" %>
+    <%= form.datetime_local_field :data_hora %>
   </div>
 
   <div>
-    <%= form.label :duracao, style: "display: block" %>
-    <%= form.number_field :duracao %>
+    <%= form.label :duracao, "Duração em minutos" %>
+    <%= form.number_field :duracao, min: 1 %>
   </div>
 
   <div>
-    <%= form.label :tipo_atendimento, style: "display: block" %>
-    <%= form.text_field :tipo_atendimento %>
+    <%= form.label :tipo_atendimento, "Tipo de atendimento" %>
+
+    <%= form.select :tipo_atendimento,
+        [
+          "Consulta",
+          "Avaliação",
+          "Retorno",
+          "Terapia",
+          "Outro"
+        ],
+        prompt: "Selecione o tipo" %>
   </div>
 
   <div>
-    <%= form.label :observacoes, style: "display: block" %>
-    <%= form.textarea :observacoes %>
+    <%= form.label :observacoes, "Observações" %>
+    <%= form.text_area :observacoes %>
   </div>
 
   <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.number_field :status %>
+    <%= form.label :status %>
+
+    <%= form.select :status,
+        Atendimento.statuses.keys.map {
+          |status| [status.humanize, status]
+        } %>
   </div>
 
   <div>

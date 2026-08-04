@@ -1,25 +1,25 @@
-class PrestadorsController < ApplicationController
+class PrestadoresController < ApplicationController
   before_action :set_prestador, only: %i[ show edit update destroy ]
 
-  # GET /prestadors or /prestadors.json
+  # GET /prestadores or /prestadores.json
   def index
-    @prestadors = Prestador.all
+    @prestadores = Prestador.all
   end
 
-  # GET /prestadors/1 or /prestadors/1.json
+  # GET /prestadores/1 or /prestadores/1.json
   def show
   end
 
-  # GET /prestadors/new
+  # GET /prestadores/new
   def new
     @prestador = Prestador.new
   end
 
-  # GET /prestadors/1/edit
+  # GET /prestadores/1/edit
   def edit
   end
 
-  # POST /prestadors or /prestadors.json
+  # POST /prestadores or /prestadores.json
   def create
     @prestador = Prestador.new(prestador_params)
 
@@ -34,7 +34,7 @@ class PrestadorsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /prestadors/1 or /prestadors/1.json
+  # PATCH/PUT /prestadores/1 or /prestadores/1.json
   def update
     respond_to do |format|
       if @prestador.update(prestador_params)
@@ -47,12 +47,12 @@ class PrestadorsController < ApplicationController
     end
   end
 
-  # DELETE /prestadors/1 or /prestadors/1.json
+  # DELETE /prestadores/1 or /prestadores/1.json
   def destroy
     @prestador.destroy!
 
     respond_to do |format|
-      format.html { redirect_to prestadors_path, notice: "Prestador was successfully destroyed.", status: :see_other }
+      format.html { redirect_to prestadores_path, notice: "Prestador was successfully destroyed.", status: :see_other }
       format.json { head :no_content }
     end
   end

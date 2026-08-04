@@ -1,0 +1,48 @@
+pt-BR:
+  activerecord:
+    models:
+      user: Usuário
+      paciente: Paciente
+      prestador: Prestador
+      atendimento: Atendimento
+
+    attributes:
+      user:
+        name: Nome
+        email_address: E-mail
+        password: Senha
+        password_confirmation: Confirmação da senha
+
+      paciente:
+        nome_completo: Nome completo
+        data_nascimento: Data de nascimento
+        cpf: CPF
+        telefone: Telefone
+        email: E-mail
+        endereco: Endereço
+
+      prestador:
+        nome_completo: Nome completo
+        especialidade: Especialidade
+        registro_profissional: Registro profissional
+        telefone: Telefone
+        email: E-mail
+        status: Status
+
+      atendimento:
+        paciente: Paciente
+        prestador: Prestador
+        data_hora: Data e hora
+        duracao: Duração
+        tipo_atendimento: Tipo de atendimento
+        observacoes: Observações
+        status: Status
+
+  date:
+    formats:
+      default: "%d/%m/%Y"
+
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      short: "%d/%m/%Y às %H:%M"

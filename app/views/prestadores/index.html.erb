@@ -1,11 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Prestadors" %>
+<% content_for :title, "prestadores" %>
 
-<h1>Prestadors</h1>
+<h1>Prestadores</h1>
 
-<div id="prestadors">
-  <% @prestadors.each do |prestador| %>
+<div id="prestadores">
+  <% @prestadores.each do |prestador| %>
     <%= render prestador %>
     <p>
       <%= link_to "Show this prestador", prestador %>

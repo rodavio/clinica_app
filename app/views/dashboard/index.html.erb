@@ -1,0 +1,64 @@
+<h1>Dashboard da clínica</h1>
+
+<section>
+  <h2>Resumo</h2>
+
+  <p>
+    Total de pacientes:
+    <strong><%= @total_pacientes %></strong>
+  </p>
+
+  <p>
+    Prestadores ativos:
+    <strong><%= @total_prestadores_ativos %></strong>
+  </p>
+
+  <p>
+    Sessões realizadas no mês:
+    <strong><%= @sessoes_realizadas_no_mes %></strong>
+  </p>
+</section>
+
+<section>
+  <h2>Próximas sessões</h2>
+
+  <% if @proximas_sessoes.any? %>
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Paciente</th>
+          <th>Prestador</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @proximas_sessoes.each do |atendimento| %>
+          <tr>
+            <td>
+              <%= l(
+                atendimento.data_hora,
+                format: :short
+              ) %>
+            </td>
+
+            <td>
+              <%= atendimento.paciente.nome_completo %>
+            </td>
+
+            <td>
+              <%= atendimento.prestador.nome_completo %>
+            </td>
+
+            <td>
+              <%= atendimento.status.humanize %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>Não existem sessões futuras.</p>
+  <% end %>
+</section>

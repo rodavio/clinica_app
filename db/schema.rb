@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_29_190910) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_30_190143) do
   create_table "atendimentos", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "data_hora", null: false
@@ -39,7 +39,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_29_190910) do
     t.index ["cpf"], name: "index_pacientes_on_cpf", unique: true
   end
 
-  create_table "prestadors", force: :cascade do |t|
+  create_table "prestadores", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email"
     t.string "especialidade"
@@ -48,7 +48,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_29_190910) do
     t.integer "status", default: 0, null: false
     t.string "telefone"
     t.datetime "updated_at", null: false
-    t.index ["registro_profissional"], name: "index_prestadors_on_registro_profissional", unique: true
+    t.index ["registro_profissional"], name: "index_prestadores_on_registro_profissional", unique: true
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -70,6 +70,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_29_190910) do
   end
 
   add_foreign_key "atendimentos", "pacientes"
-  add_foreign_key "atendimentos", "prestadors"
+  add_foreign_key "atendimentos", "prestadores"
   add_foreign_key "sessions", "users"
 end

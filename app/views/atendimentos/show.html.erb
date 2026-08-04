@@ -8,3 +8,12 @@
 
   <%= button_to "Destroy this atendimento", @atendimento, method: :delete %>
 </div>
+
+<% unless @atendimento.cancelada? %>
+  <%= button_to "Cancelar atendimento",
+      cancelar_atendimento_path(@atendimento),
+      method: :patch,
+      data: {
+        turbo_confirm: "Deseja cancelar este atendimento?"
+      } %>
+<% end %>
